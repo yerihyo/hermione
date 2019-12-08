@@ -1,0 +1,4 @@
+wheel
+setuptools==41.0.1
+git+https://github.com/foxytrixy-com/foxylib.git@v0.3.71#egg=foxylib
+jinja2-cli==0.7.0
