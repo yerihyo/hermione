@@ -13,7 +13,8 @@ errcho(){ >&2 echo $@; }
 
 
 main(){
-    aws s3 sync "/Users/najjong2/Pictures/Photos Library.photoslibrary/Masters/" "s3://yerihyo/backup/photo/jongmi-icloud/" --delete
+    #aws s3 sync "/Users/najjong2/Pictures/Photos Library.photoslibrary/Masters/" "s3://yerihyo/backup/photo/jongmi-icloud/" --delete
+    $REPO_DIR/hermione/app/backup/photo/local2s3.bash
 }
 
 pushd $REPO_DIR
