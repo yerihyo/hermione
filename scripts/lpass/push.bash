@@ -8,4 +8,4 @@ FILE_NAME=$(basename $FILE_PATH)
 LPASS_DIR=$FILE_DIR
 
 listfile_filepath=$($LPASS_DIR/tmplt2filelist.bash)
-$HOME/scripts/lpass/push.bash "$listfile_filepath"
+$FOXYLIB_DIR/scripts/lpass/push.bash "$listfile_filepath"
