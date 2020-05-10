@@ -1,17 +1,33 @@
 #!/bin/bash -eu
 
+FILE_PATH=$(readlink -f $0)
+FILE_NAME=$(basename $FILE_PATH)
+FILE_DIR=$(dirname $FILE_PATH)
+# FILE_DIR=`pwd`/../scripts/test
+SCRIPTS_DIR=$FILE_DIR
 
-
-main(){
-    # aws s3 sync "/Users/najjong2/Pictures/Photos Library.photoslibrary/Masters/" "s3://yerihyo/backup/photo/jongmi-icloud/" --delete
-#    local dirpath_local="$HOME/yeri/photo"
-    local dirpath_from="/Users/Shared/jongmi-icloud"
-    #local dirpath_from="s3://yerihyo/backup/photo/jongmi-icloud"
-    local dirpath_to="s3://yerihyo/backup/photo/jongmi-icloud"
-    $AWS2 s3 sync "$dirpath_from/" "$dirpath_to/"
+errcho(){ >&2 echo $@; }
+func_count2reduce(){
+    local v="${1?missing}"; local cmd="${2?missing}"; local n=${3?missing};
+    for ((i=0;i<$n;i++)); do v=$($cmd $v) ; done; echo "$v"
 }
 
+REPO_DIR=$(func_count2reduce $FILE_DIR dirname 4)
+AWS2=${AWS2?'missing $AWS2'}
 
+main(){
+    errcho "[$FILE_NAME] main - START"
+    pushd $REPO_DIR
+
+    $AWS2 s3 sync "/Users/Shared/jongmi-icloud" "s3://yerihyo/backup/photo/jongmi-icloud" --delete
+#    $AWS2 s3 sync "/Users/Shared/jongmi-icloud" "s3://yerihyo/backup/photo/jongmi-icloud" --delete
+
+    popd
+    errcho "[$FILE_NAME] main - END"
+}
+
+errcho "[$FILE_NAME] START"
 main
+errcho "[$FILE_NAME] END"
 
 
