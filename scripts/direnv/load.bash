@@ -13,6 +13,6 @@ errcho(){ >&2 echo $@; }
 errcho "[$FILE_NAME] START"
 
 listfile_filepath=$($LPASS_DIR/tmplt2filelist.bash)
-$FOXYLIB_DIR/scripts/direnv/load.bash "$listfile_filepath" "$@"
+. $FOXYLIB_DIR/scripts/direnv/load.bash "$listfile_filepath" "$@"
 
 errcho "[$FILE_NAME] END"
