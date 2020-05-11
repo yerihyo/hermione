@@ -13,14 +13,16 @@ func_count2reduce(){
 }
 
 REPO_DIR=$(func_count2reduce $FILE_DIR dirname 4)
-AWS2=${AWS2?'missing $AWS2'}
+AWS=${AWS?'missing $AWS'}
+AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID?'missing $AWS_ACCESS_KEY_ID'}
+AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY?'missing $AWS_SECRET_ACCESS_KEY'}
 
 main(){
     errcho "[$FILE_NAME] main - START"
     pushd $REPO_DIR
 
-    $AWS2 s3 sync "/Users/Shared/jongmi-icloud" "s3://yerihyo/backup/photo/jongmi-icloud" --delete
 #    $AWS2 s3 sync "/Users/Shared/jongmi-icloud" "s3://yerihyo/backup/photo/jongmi-icloud" --delete
+    $AWS s3 sync "/home/yerihyo/yeri/photo" "s3://yerihyo/backup/photo"
 
     popd
     errcho "[$FILE_NAME] main - END"
