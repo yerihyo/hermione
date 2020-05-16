@@ -9,7 +9,7 @@ SCRIPTS_DIR=$FILE_DIR
 REPO_DIR=$(dirname $SCRIPTS_DIR)
 
 
-errcho(){ >&2 echo $@; }
+errcho(){ >&2 echo "$@"; }
 
 
 main(){

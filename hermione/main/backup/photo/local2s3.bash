@@ -6,7 +6,7 @@ FILE_DIR=$(dirname $FILE_PATH)
 # FILE_DIR=`pwd`/../scripts/test
 SCRIPTS_DIR=$FILE_DIR
 
-errcho(){ >&2 echo $@; }
+errcho(){ >&2 echo "$@"; }
 func_count2reduce(){
     local v="${1?missing}"; local cmd="${2?missing}"; local n=${3?missing};
     for ((i=0;i<$n;i++)); do v=$($cmd $v) ; done; echo "$v"
@@ -22,7 +22,8 @@ main(){
     pushd $REPO_DIR
 
 #    $AWS2 s3 sync "/Users/Shared/jongmi-icloud" "s3://yerihyo/backup/photo/jongmi-icloud" --delete
-    $AWS s3 sync "/home/yerihyo/yeri/photo" "s3://yerihyo/backup/photo"
+#    $AWS s3 sync "/home/yerihyo/yeri/photo" "s3://yerihyo/backup/photo"
+    $AWS s3 sync "/home/yerihyo/yeri/travel" "s3://yerihyo/backup/travel"
 
     popd
     errcho "[$FILE_NAME] main - END"
