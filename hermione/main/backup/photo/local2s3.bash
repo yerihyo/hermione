@@ -23,7 +23,8 @@ main(){
 
 #    $AWS2 s3 sync "/Users/Shared/jongmi-icloud" "s3://yerihyo/backup/photo/jongmi-icloud" --delete
 #    $AWS s3 sync "/home/yerihyo/yeri/photo" "s3://yerihyo/backup/photo"
-    $AWS s3 sync "/home/yerihyo/yeri/travel" "s3://yerihyo/backup/travel"
+#    $AWS s3 sync "/home/yerihyo/yeri/travel" "s3://yerihyo/backup/travel"
+    $AWS s3 sync "/home/yerihyo/yeri/travel/201108" "s3://yerihyo/backup/travel/201108"
 
     popd
     errcho "[$FILE_NAME] main - END"
